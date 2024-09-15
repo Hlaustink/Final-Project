@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGen Trading</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Variables */
+:root {
+    --color-primary: #003366; /* Dark blue for primary elements */
+    --color-primary-light: #004080; /* Slightly lighter blue for hover states */
+    --color-secondary: #004d99; /* Deep blue for accents */
+    --color-header-bg: #002244; /* Very dark blue for header */
+    --color-link: #003366; /* Dark blue for links */
+    --color-link-hover: #004080; /* Lighter blue for link hover */
+    --color-text: #333333; /* Dark grey for text */
+    --color-bg: #f9f9f9; /* Very light grey for background */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* General Reset and Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Typography */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: grey;
+}
+
+h1, h2, h3, p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+/* Header Styles */
+header {
+    background: var(--color-header-bg);
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-links a {
+    color: #fff;
+    margin-left: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-links .login {
+    border: 1px solid var(--color-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.auth-links .login:hover {
+    background: var(--color-secondary);
+    color: #fff;
+}
+
+.auth-links .signup {
+    background: var(--color-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.auth-links .signup:hover {
+    background: var(--color-primary-light);
+}
+/* Main Container */
+main {
+    padding: 2rem 1rem;
+}
+
+/* Home Section */
+.home-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+
+.home-content {
+    display: flex;
+    flex-direction: row; /* Text on the left, image on the right */
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.text-content {
+    max-width: 50%;
+}
+
+.text-content h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary); /* Dark blue for main headings */
+    margin-bottom: 0.5rem; /* Consistent spacing below headings */
+}
+
+.text-content h2 {
+    font-size: 1.75rem;
+    color: var(--color-primary-light); /* Medium blue for subheadings */
+    margin-bottom: 1rem;
+}
+
+.text-content p {
+    margin-bottom: 1.5rem;
+    color: var(--color-text); /* Dark grey for text */
+    line-height: 1.7; /* Improve readability */
+}
+
+.features-list {
+    list-style: disc;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--color-text); /* Ensure list text color matches the body text */
+}
+
+.features-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* Button Styles */
+.btn-signup {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center; /* Ensure text is centered */
+    transition: background 0.3s, box-shadow 0.3s; /* Smooth transition for background and shadow */
+    border: none; /* Ensure button has no border */
+    cursor: pointer; /* Pointer cursor for buttons */
+}
+
+.btn-signup:hover {
+    background: var(--color-primary-light); /* Slightly lighter blue for hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover for depth */
+}
+
+/* Image Content */
+.image-content {
+    max-width: 50%;
+    padding-left: 1rem; /* Space between text and image */
+}
+
+.image-content img {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Modern shadow */
+    object-fit: cover; /* Ensure image maintains aspect ratio */
+}
+/* CSS Variables for Dark Blue Theme */
+:root {
+    --color-primary: #003366; /* Dark blue for primary elements */
+    --color-primary-light: #004080; /* Slightly lighter blue for borders and hover states */
+    --color-background: #e6f0ff; /* Very light blue for section backgrounds */
+    --color-text: #003366; /* Dark blue for text */
+    --color-text-light: #00509e; /* Slightly lighter dark blue for secondary text */
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch; /* Ensure equal height for items */
+    margin: 2rem 0;
+    background: var(--color-background); /* Very light blue for a soft background */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.stat-item {
+    text-align: center;
+    color: var(--color-text); /* Dark blue for text */
+    padding: 1.5rem; /* Increased padding for better spacing */
+    border: 2px solid var(--color-primary-light); /* Light blue border */
+    border-radius: 10px;
+    background: #ffffff; /* White background for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+    flex: 1;
+    margin: 0 0.5rem; /* Reduced margin for better spacing */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+.stat-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.stat-item .icon {
+    font-size: 3rem; /* Larger icon for better visibility */
+    color: var(--color-primary); /* Dark blue for icons */
+    margin-bottom: 0.75rem; /* Increased margin for spacing */
+}
+
+.stat-item h1 {
+    font-size: 2.25rem; /* Slightly larger font size for headings */
+    margin-bottom: 0.5rem;
+    color: var(--color-primary); /* Dark blue for headings */
+    line-height: 1.2; /* Improved readability with line height */
+}
+
+.stat-item p {
+    font-size: 1.125rem; /* Larger font size for paragraph text */
+    color: var(--color-text-light); /* Slightly lighter dark blue for text */
+    line-height: 1.5; /* Improved readability */
+    margin: 0; /* Remove default margin */
+}
+/* CSS Variables for Dark Blue Theme */
+:root {
+    --color-primary: #003366; /* Dark blue for primary elements */
+    --color-primary-light: #004080; /* Slightly lighter blue for borders and hover states */
+    --color-background: #f9f9f9; /* Very light grey background for sections */
+    --color-text: #003366; /* Dark blue for text */
+    --color-text-light: #00509e; /* Slightly lighter dark blue for secondary text */
+    --color-border: #ddd; /* Light grey for borders */
+}
+
+/* Services Section */
+.services {
+    padding: 50px 0;
+    background-color: #ffffff; /* Clean white for background */
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--color-primary); /* Dark blue for headings */
+    text-align: center; /* Center align heading */
+}
+
+.service-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.service-item {
+    background: #ffffff; /* White background for items */
+    border: 1px solid var(--color-border); /* Light grey border */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    max-width: 23%; /* Adjust to fit in row */
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, transform 0.3s; /* Smooth transitions for hover effects */
+}
+
+.service-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-primary); /* Dark blue for subheadings */
+}
+
+.specialists {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.specialist img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.service-icon {
+    width: 50px;
+    color: var(--color-primary); /* Dark blue for icons */
+}
+
+/* Chatbot Section */
+.chatbot button {
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+}
+
+.chatbot button:hover {
+    background: var(--color-primary-light); /* Slightly lighter blue for hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+}
+
+/* Trading Options Section */
+.trading-types {
+    padding: 50px 0;
+    background-color: var(--color-background); /* Light grey for background */
+}
+
+.trading-types h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--color-primary); /* Dark blue for headings */
+    text-align: center; /* Center align heading */
+}
+
+.trading-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.trading-box {
+    background: #ffffff; /* White background for boxes */
+    border: 1px solid var(--color-border); /* Light grey border */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    max-width: 30%; /* Adjust to fit in row */
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, transform 0.3s; /* Smooth transitions for hover effects */
+}
+
+.trading-box:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.trading-box img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.trading-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: var(--color-primary); /* Dark blue for subheadings */
+}
+/* Trading Options Section */
+.trading-types {
+    padding: 50px 0;
+    background-color: #f1f1f1; /* Light gray background for contrast */
+}
+
+.trading-types h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #00274d; /* Very dark blue for section heading */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle shadow for better legibility */
+}
+
+.trading-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.trading-box {
+    background: #ffffff; /* White background for trading boxes */
+    border: 1px solid #dddddd; /* Light gray border for subtle definition */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    max-width: calc(33.333% - 20px); /* Adjust to fit in row with gap */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+}
+
+.trading-box:hover {
+    transform: translateY(-10px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.trading-box img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 2px solid #003366; /* Dark blue border around images */
+}
+
+.trading-box h3 {
+    font-size: 1.5rem; /* Slightly larger for better emphasis */
+    margin-bottom: 10px;
+    color: #003366; /* Dark blue for subheadings inside trading boxes */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Subtle shadow for better readability */
+}
+
+.trading-box p {
+    font-size: 1rem;
+    line-height: 1.6; /* Increased line-height for better readability */
+    color: #004080; /* Medium dark blue for paragraph text */
+    margin-top: 0; /* Remove default margin-top for cleaner alignment */
+}
+/* Best Traders Section */
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #003366; /* Dark blue text color for the entire document */
+}
+
+.best-traders {
+    background-color: #f9f9f9; /* Light background color for contrast */
+    padding: 40px 0; /* Vertical padding for spacing */
+}
+
+.container {
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.best-traders h2 {
+    font-size: 2.5rem; /* Use rem units for better scalability */
+    color: #003366; /* Dark blue color for heading */
+    text-align: center; /* Center align heading */
+    margin-bottom: 40px; /* Space below heading */
+    line-height: 1.2; /* Adjust line height for better readability */
+}
+
+.traders {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 20px; /* Space between grid items */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.trader {
+    background-color: #ffffff; /* White background for each trader card */
+    border-radius: 12px; /* Slightly more rounded corners for each card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for card */
+    overflow: hidden; /* Ensure image and text fit within the card */
+    text-align: center; /* Center align text */
+    padding: 20px; /* Padding inside each card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    box-sizing: border-box; /* Include padding and border in width/height calculation */
+}
+
+.trader:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.trader img {
+    width: 100%; /* Ensure image takes up full width of the card */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 150px; /* Limit the maximum height of the image */
+    object-fit: cover; /* Ensure the image covers the card area without distortion */
+    border-radius: 8px; /* Rounded corners for image */
+    margin-bottom: 15px; /* Space below image */
+}
+
+.trader p {
+    font-size: 1rem; /* Use rem units for better scalability */
+    color: #003366; /* Dark blue color for text */
+    line-height: 1.5; /* Adjust line height for readability */
+    margin-bottom: 0; /* Remove default margin */
+}
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #003366; /* Set a default text color for consistency */
+}
+
+.how-to-get-started {
+    background-color: #eaf1f9; /* Light blue background for contrast */
+    padding: 40px 0; /* Vertical padding for spacing */
+}
+
+.container {
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.how-to-get-started h2 {
+    font-size: 2rem; /* Use rem units for better scalability */
+    color: #003366; /* Dark blue color for heading for better contrast */
+    text-align: center; /* Center align heading */
+    margin-bottom: 40px; /* Space below heading */
+    line-height: 1.2; /* Improve readability with adjusted line height */
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid with minimum column width */
+    gap: 20px; /* Space between grid items */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.step {
+    background-color: #ffffff; /* White background for each step card */
+    border-radius: 12px; /* Slightly more rounded corners for each card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for card */
+    padding: 20px; /* Padding inside each card */
+    text-align: center; /* Center align text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.step:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.icon {
+    font-size: 2.25rem; /* Use rem units for better scalability */
+    color: #003366; /* Dark blue color for the icon to match the theme */
+    margin-bottom: 15px; /* Space below the icon */
+}
+
+.step h3 {
+    font-size: 1.25rem; /* Use rem units for better scalability */
+    color: #003366; /* Dark blue color for headings */
+    margin-bottom: 10px; /* Space below heading */
+}
+
+.step p {
+    font-size: 1rem; /* Use rem units for better scalability */
+    color: #666; /* Lighter color for text */
+    line-height: 1.5; /* Improve readability with adjusted line height */
+}
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #003366; /* Dark blue text color for consistency */
+}
+
+/* Styles specifically for the Expertise on Demand section */
+.expertise-on-demand {
+    background-color: #f4f4f4; /* Light background color for contrast */
+    padding: 40px 0; /* Vertical padding for spacing */
+}
+
+.expertise-on-demand .container {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space between text and image */
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Horizontal padding for spacing */
+    gap: 20px; /* Space between text and image on small screens */
+}
+
+.expertise-on-demand .text-content {
+    flex: 1; /* Take up remaining space */
+}
+
+.expertise-on-demand .text-content h2 {
+    font-size: 2rem; /* Use rem units for scalability */
+    color: #003366; /* Dark blue color for heading */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.expertise-on-demand .text-content p {
+    font-size: 1rem; /* Use rem units for scalability */
+    color: #003366; /* Lighter color for paragraph text */
+    margin-bottom: 20px; /* Space below paragraph */
+}
+
+.expertise-on-demand .btn-find-trader {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem; /* Use rem units for scalability */
+    color: #fff;
+    background-color: #007bff; /* Button background color */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners for button */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.expertise-on-demand .btn-find-trader:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+}
+
+.expertise-on-demand .image-content {
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+}
+
+.expertise-on-demand .image-content img {
+    max-width: 100%; /* Ensure the image scales properly */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners for image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .expertise-on-demand .container {
+        flex-direction: column; /* Stack text and image vertically on small screens */
+        text-align: center; /* Center align text on small screens */
+    }
+
+    .expertise-on-demand .text-content {
+        margin-right: 0; /* Remove margin on small screens */
+        margin-bottom: 20px; /* Space below text content when stacked */
+    }
+
+    .expertise-on-demand .image-content {
+        margin-bottom: 20px; /* Space below image when stacked */
+    }
+}
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #003366; /* Dark blue text color for consistency */
+}
+
+/* Styles specifically for the Urgent Trading Solutions section */
+.urgent-solutions {
+    background-color: #fff; /* White background for contrast */
+    padding: 40px 0; /* Vertical padding for spacing */
+}
+
+.urgent-solutions .container {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space between image and text */
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.urgent-solutions .urgent-solutions-content {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Space between image and text */
+    width: 100%; /* Ensure content takes up full width */
+}
+
+.urgent-solutions .urgent-solutions-image {
+    flex: 1; /* Take up remaining space */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.urgent-solutions .urgent-solutions-image img {
+    max-width: 100%; /* Ensure the image scales properly */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners for image */
+}
+
+.urgent-solutions .urgent-solutions-text {
+    flex: 1; /* Take up remaining space */
+}
+
+.urgent-solutions .urgent-solutions-text h2 {
+    font-size: 28px;
+    color: #003366; /* Dark blue color for heading */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.urgent-solutions .urgent-solutions-text p {
+    font-size: 16px;
+    color: #003366; /* Lighter color for paragraph text */
+    margin-bottom: 20px; /* Space below paragraph */
+}
+
+.urgent-solutions .btn-consultation {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #003366; /* Dark blue background color */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners for button */
+    transition: background-color 
+0.3s ease; /* Smooth transition for hover effect */
+}
+
+.urgent-solutions .btn-consultation:hover {
+    background-color: #002244; /* Darker blue on hover */
+}
+
+/* Styles for the Testimonials section */
+.testimonials {
+    background-color: #f9f9f9; /* Light gray background for contrast */
+    padding: 40px 0; /* Vertical padding for spacing */
+}
+
+.testimonials .container {
+    max-width: 1200px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.testimonials h2 {
+    font-size: 28px;
+    color: #003366; /* Dark blue color for heading */
+    text-align: center; /* Center align heading */
+    margin-bottom: 40px; /* Space below heading */
+}
+
+.testimonial-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+}
+
+.testimonial-item {
+    background-color: #fff; /* White background for each testimonial */
+    border-radius: 8px; /* Rounded corners for each testimonial */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for card */
+    padding: 20px; /* Padding inside each testimonial card */
+    text-align: center; /* Center align text */
+}
+
+.testimonial-text {
+    margin-bottom: 20px; /* Space below testimonial text */
+}
+
+.testimonial-text p {
+    font-size: 16px;
+    color: #003366; /* Lighter color for testimonial text */
+    line-height: 1.5; /* Improve readability */
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align author section */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.testimonial-author img {
+    border-radius: 50%; /* Circular avatar */
+    width: 80px; /* Avatar size */
+    height: 80px; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below avatar */
+}
+
+.testimonial-author h3 {
+    font-size: 18px;
+    color: #003366; /* Dark blue color for author name */
+    margin-bottom: 5px; /* Space below author name */
+}
+
+.testimonial-author p {
+    font-size: 14px;
+    color: #999; /* Lighter color for author role */
+}
+
+/* Styles for the Easy Registration section */
+.easy-registration {
+    background-color: #e0f7fa; /* Light cyan background for a fresh look */
+    padding: 40px 0; /* Vertical padding for spacing */
+    text-align: center; /* Center-align text */
+}
+
+.easy-registration .container {
+    max-width: 800px; /* Limit the width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Horizontal padding for spacing */
+}
+
+.easy-registration h2 {
+    font-size: 30px;
+    color: #003366; /* Dark blue color for the heading */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.easy-registration p {
+    font-size: 18px;
+    color: #003366; /* Darker teal color for the paragraph text */
+    margin-bottom: 30px; /* Space below paragraph */
+}
+
+.easy-registration .btn-register {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #003366; /* Dark blue background color for the button */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners for button */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.easy-registration .btn-register:hover {
+    background-color: #002244; /* Darker blue color on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+/* General Footer Styling */
+.footer {
+    background-color: #002D72; /* Dark Blue Background */
+    color: #f0f0f0; /* Light Grey Text */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Social Media Section */
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: #f0f0f0; /* Light Grey Icons */
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #4CAF50; /* Green on Hover */
+}
+
+/* Footer Links Section */
+.footer-links {
+    display: flex;
+    gap: 150px;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-column h3 {
+    color: #ffffff; /* White Headers */
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0px;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #d3d3d3; /* Light Grey Links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #4CAF50; /* Green on Hover */
+}
+
+/* Footer Text */
+.footer p {
+    text-align: center;
+    margin-top: 20px;
+    color: #d3d3d3; /* Light Grey Text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://demo-customlinks.com/ross_firm_dev/assets/uploads/logo/nw-logo168748347244.png" alt="SpectorRoss Logo" class="logo-image">
+                <h1 class="logo-text">SpectorROss</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#lawyers">Lawyers</a></li>
+                    <li><a href="#departments">Departments</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a href="login.html" class="login">Login</a>
+                <a href="signup.html" class="signup">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="home-section">
+            <div class="container home-content">
+                <div class="text-content">
+                    <h1>Welcome to SpectorRoss Law Firm</h1>
+                    <h2>We are the leading Law Firm providing top-notch legal services to individuals and businesses globally</h2>
+                    <p>At SpectorROss, Our Mission is to ensure justice for all.</p>
+                    <ul class="features-list">
+                        <li>Advanced Legal Research Tools</li>
+                        <li>In-depth Legal Market Analysis</li>
+                        <li>Comprehensive Legal Document Access</li>
+                        <li>Cuustomized Legal Support</li>
+                    </ul>
+                    <a href="#signup" class="btn-signup">Stay Informed: Get Expert Legal Insights</a>
+                </div>
+                <div class="video-content">
+                    <video width="640" height="360" controls>
+                    <source src="https://th.bing.com/th/id/OIP.CDVKz7jYreXpJRbClSKcnQHaEK?rs=1&pid=ImgDetMain" type="video/mp4">
+                    </video>
+                </div
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-item">
+                <i class="icon"></i>
+                <h1 class="count" data-target="99" data-type="percentage">0%</h1>
+                <p>Satisfaction</p>
+            </div>
+            <div class="stat-item">
+                <i class="icon"></i>
+                <h1 class="count" data-target="15000" data-type="plus">0+</h1>
+                <p>Advocates</p>
+            </div>
+            <div class="stat-item">
+                <i class="icon"></i>
+                <h1 class="count" data-target="10000" data-type="plus">0+</h1>
+                <p>Satisfied Clients</p>
+            </div>
+            <div class="stat-item">
+                <i class="icon"></i>
+                <h1 class="count" data-target="100" data-type="plus">0+</h1>
+                <p>Services</p>
+            </div>
+        </section>
+
+        <!-- Our Best Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Legal Services</h2>
+                <div class="service-items">
+                    <div class="service-item">
+                        <h3>Our Top Legal Experts</h3>
+                        <div class="specialists">
+                            <div class="specialist">
+                                <img src="https://images.pexels.com/photos/4065945/pexels-photo-4065945.jpeg" alt="Expert 1">
+                                <p>Rachel Zane - Expert in Corporate Law</p>
+                            </div>
+                            <div class="specialist">
+                                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Expert 2">
+                                <p>Henderson Saint- Leading Litigation Attorney</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <h3>Confidential and Secure</h3>
+                        <p>We prioritize your confidentiality and utilize cutting-edge security measures to protect your sensitive legal information.</p>
+                        <img src="https://images.pexels.com/photos/1905832/pexels-photo-1905832.jpeg" alt="Confidential and Secure" class="service-icon">
+                    </div>
+                    <div class="service-item">
+                        <h3>Trusted by Thousands</h3>
+                        <p>Join over thousands of satisfied clients who trust us for their legal needs.</p>
+                        <div class="stats">
+                            <span class="count">10,000+</span>
+                            <p>Clients</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <h3>Contact Us</h3>
+                        <div class="chatbot">
+                            <img src="https://images.pexels.com/photos/1181245/pexels-photo-1181245.jpeg" alt="Chatbot Icon" class="service-icon">
+                            <p>Need legal assistance? Click here to chat with our legal support team!</p>
+                            <button>Contact Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Legal Practice Areas Section -->
+        <section id="traders" class="trading-types">
+            <div class="container">
+                <h2>Our Legal Practice Areas</h2>
+                <div class="trading-boxes">
+                    <div class="trading-box">
+                        <img src="https://images.pexels.com/photos/883340/pexels-photo-883340.jpeg" alt="Corporate Law">
+                        <h3>Corporate Law</h3>
+                        <p>Providing expert legal advice on corporate governance, compliance, and business transactions.</p>
+                    </div>
+                    <div class="trading-box">
+                        <img src="https://images.pexels.com/photos/3934434/pexels-photo-3934434.jpeg" alt="Criminal Defense">
+                        <h3>Criminal Defense</h3>
+                        <p>Defending your rights in criminal cases with a strong legal team.</p>
+                    </div>
+                    <div class="trading-box">
+                        <img src="https://images.pexels.com/photos/730572/pexels-photo-730572.jpeg" alt="Family Law">
+                        <h3>Family Law</h3>
+                        <p>Helping you navigate through family law issues, including divorce and child custody.</p>
+                    </div>
+                    <div class="trading-box">
+                        <img src="https://images.pexels.com/photos/733306/pexels-photo-733306.jpeg" alt="Immigration Law">
+                        <h3>Immigration Law</h3>
+                        <p>Assisting with visas, naturalization, and other immigration matters.</p>
+                    </div>
+                    <div class="trading-box">
+                        <img src="https://images.pexels.com/photos/4483371/pexels-photo-4483371.jpeg" alt="Intellectual Property Law">
+                        <h3>Intellectual Property Law</h3>
+                        <p>Protecting your innovations and creative works with comprehensive IP services.</p>
+                    </div>
+                    <div class="trading-box">
+                        <img src="https://images.pexels.com/photos/5717026/pexels-photo-5717026.jpeg" alt="Real Estate Law">
+                        <h3>Real Estate Law</h3>
+                        <p>Providing legal guidance on real estate transactions and property disputes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Lawyers Section -->
+        <section id="best-traders" class="best-traders">
+            <div class="container">
+                <h2>Meet Our Top Lawyers</h2>
+                <div class="traders">
+                    <div class="trader">
+                        <img src="https://th.bing.com/th/id/R.8349827999a97b738b5f3985ec87c204?rik=R3%2fMonoZqcYNmA&riu=http%3a%2f%2fimages6.fanpop.com%2fimage%2fphotos%2f38500000%2fHarvey-Specter-suits-38516366-1920-1080.jpg&ehk=EJXNcjHNy0amrKiuiXRwYxTe0JIAWF5b6mN4M4vw%2fXo%3d&risl=&pid=ImgRaw&r=0" alt="Lawyer 1">
+                        <p>Harvey Specter - Senior Corporate Lawyer</p>
+                    </div>
+                    <div class="trader">
+                        <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2019/03/Suits-Samantha-Wheeler.jpg" alt="Lawyer 2">
+                        <p>Samantha Wheeler - Criminal Defense Attorney</p>
+                    </div>
+                    <div class="trader">
+                        <img src="https://th.bing.com/th/id/R.017d8411ba3843c901ab77ea761046a8?rik=HixaZjQmrozn1A&pid=ImgRaw&r=0" alt="Lawyer 3">
+                        <p>Donna Paulsen - Family Law Specialist</p>
+                    </div>
+                    <div class="trader">
+                        <img src="https://th.bing.com/th/id/R.b2c849d2f536623834c05f2a8e50a74e?rik=miDfLywY9uhV%2fw&riu=http%3a%2f%2fvignette4.wikia.nocookie.net%2fsuits%2fimages%2f6%2f62%2fMike_ross.jpg%2frevision%2flatest%3fcb%3d20150727181238&ehk=YL115h1ccffrD3K8J9ashY4lSYAqWPinVBrwkpeI3e8%3d&risl=&pid=ImgRaw&r=0" alt="Lawyer 4">
+                        <p>Mike Ross - Expert in Real Estate Law</p>
+                    </div>
+                    <div class="trader">
+                        <img src="https://i.pinimg.com/originals/a5/4a/75/a54a75a364d8002dedd2627d9eb75d95.jpg" alt="Lawyer 5">
+                        <p>Katrina Bennett - Property Law Expert</p>
+                    </div>
+                    <div class="trader">
+                        <img src="https://evoke.ie/wp-content/uploads/2020/04/GettyImages-1163382489-1.jpg" alt="Lawyer 6">
+                        <p>Alex Williams - Immigration Law Specialist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How To Get Started Section -->
+        <section id="how-to-get-started" class="how-to-get-started">
+            <div class="container">
+                <h2>Easy Steps to Get Legal Assistance</h2>
+                <div class="steps">
+                    <div class="step">
+                        <i class="icon">👤</i>
+                        <h3>Visit Lawyer Profile</h3>
+                    </div>
+                    <div class="step">
+                        <i class="icon">📅</i>
+                        <h3>Request Legal Consultation</h3>
+                    </div>
+                    <div class="step">
+                        <i class="icon">📞</i>
+                        <h3>Receive Your Consultation</h3>
+                    </div>
+                    <div class="step">
+                        <i class="icon">✅</i>
+                        <h3>Get Your Legal Solution</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise on Demand Section -->
+        <section class="expertise-on-demand">
+            <div class="container">
+                <div class="text-content">
+                    <h2>Top Legal Minds Available Anytime</h2>
+                    <p>Our page connects you with top legal minds, ensuring you have access to high-quality legal advice and strategies at your convenience. Whether you're looking for insights into corporate law, family law, or litigation, our team of specialists is ready to provide personalized solutions tailored to your needs.</p>
+                    <a href="#find-doctor" class="btn-find-doctor">Find Lawyer Now</a>
+                </div>
+                <div class="image-content">
+                    <img src="https://th.bing.com/th/id/R.a5ca94f4b035fc59e55d025500014d83?rik=fdWhWrWwGQvnSA&pid=ImgRaw&r=0" alt="Expertise on Demand">
+                </div>
+            </div>
+        </section>
+        <!-- Urgent Legal Solutions Section -->
+<section id="urgent-solutions" class="urgent-solutions">
+    <div class="container">
+        <div class="urgent-solutions-content">
+            <div class="urgent-solutions-image">
+                <img src="https://th.bing.com/th/id/R.82a1f43df7298f78b9c13b578e4d9365?rik=x7Y8T%2bSCu%2bHjYw&pid=ImgRaw&r=0&sres=1&sresct=1" alt="Urgent Legal Solutions">
+            </div>
+            <div class="urgent-solutions-text">
+                <h2>Immediate Legal Solutions for Your Urgent Needs</h2>
+                <p>In a dynamic legal landscape, quick and effective advice is crucial. Our skilled team offers timely support and targeted strategies for any legal challenge, from contract disputes to urgent litigation, ensuring you get the guidance needed to stay ahead.</p>
+                <a href="#consultation" class="btn-consultation">Take Consultation</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--testimonials-->
+<section class="testimonials">
+    <div class="container">
+        <h2>What People Say About us</h2>
+        <div class="testimonial-items">
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>"The legal team here is incredible. They handled my case with professionalism and ensured that I was always informed. Highly recommend their services!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://th.bing.com/th/id/R.40c1bf6a76dea420e9d31c13fa1e6187?rik=d0uMIWGFKvGi1A&pid=ImgRaw&r=0" alt="Client 1">
+                    <h3>Mitchell Rodriguez</h3>
+                    <p>Corporate Client</p>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>"I have worked with many law firms, but this one stands out for its dedication and expertise. They guided me through every step of the legal process."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://th.bing.com/th/id/R.79a3ecfb0a92fb44ff5205ca27d159d6?rik=i%2fZBQj6Jbe3Rlw&riu=http%3a%2f%2fimages6.fanpop.com%2fimage%2fphotos%2f39800000%2fLucifer-Season-2-Portrait-Lucifer-Morningstar-lucifer-fox-39873551-2100-2803.jpg&ehk=bGqLld%2fZRh06B2MKa1P%2fVOyomgOLJqJo9krKy55OXXk%3d&risl=&pid=ImgRaw&r=0" alt="Client 2">
+                    <h3>Mr. Morning Star</h3>
+                    <p>Litigation Client</p>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>"The legal team’s responsiveness is unmatched. Whenever I faced a legal challenge, their swift and thorough advice made all the difference."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://www.headshotlondon.co.uk/wp-content/uploads/2050/01/corporate-photography-headshotlondon21.jpg" alt="Client 3">
+                    <h3>Jerome Banks</h3>
+                    <p>Corporate Executive</p>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>"Their comprehensive legal analysis and strategic guidance have been invaluable. I now approach my legal matters with much greater confidence."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://th.bing.com/th/id/R.1182598f68e46fbf6c970f18e095c779?rik=KbC3tU3%2fyzSs3w&pid=ImgRaw&r=0" alt="Client 4">
+                    <h3>Doulph Lander</h3>
+                    <p>Business Owner</p>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>"The integration of their legal services into my business operations has been seamless. Their expertise is a vital asset for any serious business."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://businesschronicler.com/wp-content/uploads/2021/06/Jeff-Bezos-Bio.jpeg" alt="Client 5">
+                    <h3>Matt Otis</h3>
+                    <p>Legal Consultant</p>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <div class="testimonial-text">
+                    <p>"An exceptional legal service that consistently meets my needs. Their regular updates and proactive approach have greatly enhanced my legal strategy."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://i1.wp.com/press.farm/wp-content/uploads/2018/10/mark-zuckerberg-1080x675.jpg" alt="Client 6">
+                    <h3>Clarence Mwaniki</h3>
+                    <p>Entreprenuer</p>
+                </div>
+            </div>
+            <!-- Add more testimonials as needed -->
+        </div>
+    </div>
+</section>
+<!-- Want to Register Easily Section -->
+<section id="easy-registration" class="easy-registration">
+    <div class="container">
+        <h2>Want to Get Legal Help Easily?</h2>
+        <p>Embark on your legal journey now and connect with our expert attorneys. Our registration process is fast and simple.</p>
+        <a href="#register" class="btn-register">Register Now</a>
+    </div>
+</section>
+
+
+        <!-- Footer Section -->
+        <footer>
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Social Media Section -->
+        <div class="footer-social">
+            <a href="https://twitter.com/yourpage" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/yourpage" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://linkedin.com/in/yourpage" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com/yourpage" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <!-- Footer Links Section -->
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#delivery-support">Delivery Support</a></li>
+                    <li><a href="#contact-us">Contact Us</a></li>
+                    <li><a href="#privacy-policy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Features</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#traders">Traders</a></li>
+                    <li><a href="#facility">Facility</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>User</h3>
+                <ul>
+                    <li><a href="#user-login">User Login</a></li>
+                    <li><a href="#user-register">User Register</a></li>
+                    <li><a href="#forgot-password">Forgot Password</a></li>
+                    <li><a href="#account-settings">Account Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+            <p>&copy; 2024 Your Law Firm. All rights reserved.</p>
+        </footer>
+    </main>
+    <script>
+        // Function to animate the count
+        function animateCount(el) {
+            const target = +el.getAttribute('data-target'); // Final target value
+            const type = el.getAttribute('data-type'); // Get type (percentage or plus)
+            const speed = 200; // Adjust speed here
+            const increment = target / speed;
+            let count = 0;
+            
+            const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                    if (type === 'percentage') {
+                        el.textContent = Math.ceil(count) + '%'; // Add percentage symbol
+                    } else if (type === 'plus') {
+                        el.textContent = Math.ceil(count) + '+'; // Add plus symbol
+                    }
+                    requestAnimationFrame(updateCount);
+                } else {
+                    // Final value assignment
+                    if (type === 'percentage') {
+                        el.textContent = target + '%'; // Ensure it ends at exact target with %
+                    } else if (type === 'plus') {
+                        el.textContent = target + '+'; // Ensure it ends at exact target with +
+                    }
+                }
+            };
+            
+            updateCount();
+        }
+    
+        // Start animation when the page is loaded
+        window.addEventListener('load', () => {
+            const counters = document.querySelectorAll('.count');
+            counters.forEach(counter => animateCount(counter));
+        });
+    </script>
+</body>
+</html>
